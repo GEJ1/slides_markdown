@@ -88,19 +88,22 @@ style: |
   section.portada h1 {
     font-size: 52px;
     border: none;
+    color: white;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.8);
   }
 
   section.portada h2 {
     font-size: 30px;
-    color: #4a5568;
+    color: rgba(255,255,255,0.9);
+    text-shadow: 0 1px 6px rgba(0,0,0,0.7);
   }
 
   .demo-box {
     background-color: #ffffff;
     border: 1px solid #cbd5e0;
     border-radius: 8px;
-    padding: 20px;
-    margin-top: 20px;
+    padding: 14px 18px;
+    margin-top: 14px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.05);
   }
 
@@ -108,12 +111,13 @@ style: |
     font-family: monospace;
     color: #1a202c;
     background-color: #e2e8f0;
-    padding: 12px;
+    padding: 10px 12px;
     border-radius: 6px;
     display: block;
-    margin-top: 10px;
+    margin-top: 8px;
     white-space: pre-wrap;
-    font-size: 1em;
+    font-size: 0.82em;
+    line-height: 1.5;
   }
 
   .diagram {
@@ -214,11 +218,11 @@ El control de versiones es un sistema que registra los cambios de un archivo o c
 
 Git es el sistema de control de versiones mas usado en el mundo. Es local, rapido y no necesita conexion para la mayoria de las operaciones.
 
-![bg right:40%](static/git_logo.jpg)
-
 - Funciona offline: el historial vive en tu maquina
 - Cada copia del repositorio es un backup completo
 - Es el estandar de la industria desde hace mas de 15 anos
+
+![w:380px](static/git_logo.jpg)
 
 ---
 
@@ -309,7 +313,7 @@ del precio final. Esto generaba un cobro incorrecto en checkout.</span>
 
 Un repositorio remoto es una copia del proyecto alojada en un servidor (GitHub, GitLab, Bitbucket, etc.). Sirve como punto de sincronizacion entre varios colaboradores.
 
-![bg left:35%](static/github.jpg)
+![bg left:35% fit](static/github.jpg)
 
 - `git remote add origin URL`: conecta el repo local con el remoto
 - `git push`: sube los commits locales al servidor

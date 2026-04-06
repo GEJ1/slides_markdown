@@ -24,9 +24,22 @@ Uso principal: copiar el contenido de este archivo al inicio de una conversacion
 - **Flujo logico:** Intro -> Desarrollo -> Cierre. La ultima slide debe cerrar, no quedar colgada.
 - **Tablas:** Deben ir en una slide aislada. Una tabla que no entra completa en pantalla es inutilizable durante una presentacion. No debe haber scroll.
 - **Imagenes:** Siempre descargadas localmente en una carpeta `/static/`. Nunca usar URLs externas durante una presentacion. Sintaxis segun necesidad:
-  - Lateral: `![bg right:40%](../static/imagen.jpg)`
+  - Lateral (foto): `![bg right:40%](../static/imagen.jpg)` — usa `object-fit: cover`, recorta la imagen para llenar el area.
+  - Lateral (logo o icono cuadrado): `![bg right:40% fit](../static/logo.jpg)` — agregar `fit` para usar `object-fit: contain` y evitar que se corte. Solo funciona bien para imagenes cuadradas o de proporcion similar al area del panel.
+  - Logo ancho (ej. 2:1 o mas): no usar `bg`. Usar imagen inline con tamano fijo: `![w:380px](../static/logo.jpg)`. Los logos muy anchos se recortan en el borde derecho del slide aunque se use `fit`.
   - Centrada con tamano fijo: `![w:600px](../static/imagen.jpg)`
   - Fondo completo: `![bg](../static/imagen.jpg)`
+- **Texto sobre imagen de fondo (portada):** Cuando una slide tiene `![bg]`, el texto puede quedar ilegible. Agregar en el CSS de `section.portada` color blanco y sombra de texto:
+  ```css
+  section.portada h1 {
+    color: white;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.8);
+  }
+  section.portada h2 {
+    color: rgba(255,255,255,0.9);
+    text-shadow: 0 1px 6px rgba(0,0,0,0.7);
+  }
+  ```
 - **Bloques de codigo o prompts:** Usar la clase `.demo-box` con `.prompt-text` interno para aislar visualmente el texto con fuente monospace y fondo grisaceo. No poner prompts en viñetas normales.
 - **Diagramas de flujo:** Para representar relaciones, pipelines o arquitecturas, usar HTML con las clases `.diagram`, `.box`, `.box.accent` y `.arrow`. No describir flujos con parrafos de texto cuando un diagrama es mas claro.
 
@@ -141,11 +154,14 @@ section.portada {
 section.portada h1 {
   font-size: 52px;
   border: none;
+  color: white;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.8);
 }
 
 section.portada h2 {
   font-size: 30px;
-  color: #4a5568;
+  color: rgba(255,255,255,0.9);
+  text-shadow: 0 1px 6px rgba(0,0,0,0.7);
 }
 
 /* Bloque para mostrar prompts o ejemplos de codigo */
@@ -153,8 +169,8 @@ section.portada h2 {
   background-color: #ffffff;
   border: 1px solid #cbd5e0;
   border-radius: 8px;
-  padding: 20px;
-  margin-top: 20px;
+  padding: 14px 18px;
+  margin-top: 14px;
   box-shadow: 0 4px 6px rgba(0,0,0,0.05);
 }
 
@@ -162,12 +178,13 @@ section.portada h2 {
   font-family: monospace;
   color: #1a202c;
   background-color: #e2e8f0;
-  padding: 12px;
+  padding: 10px 12px;
   border-radius: 6px;
   display: block;
-  margin-top: 10px;
+  margin-top: 8px;
   white-space: pre-wrap;
-  font-size: 1em;
+  font-size: 0.82em;
+  line-height: 1.5;
 }
 
 /* Diagrama de flujo con cajas y flechas */

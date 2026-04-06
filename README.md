@@ -122,6 +122,20 @@ Marp extiende la sintaxis estandar de Markdown para controlar la ubicacion y el 
 
 Las rutas deben ser relativas al archivo `.md`. Siempre usar imagenes descargadas localmente, nunca URLs externas: durante una clase, la conexion puede fallar.
 
+### Imagenes en la exportacion a PDF
+
+Al exportar a PDF, Marp usa Chromium internamente y por defecto bloquea el acceso a archivos locales. Si el PDF se genera sin imagenes, hay que habilitar el acceso explicitamente:
+
+**CLI:**
+```bash
+marp --pdf --allow-local-files archivo.md
+```
+
+**Extension de VS Code:** agregar en `settings.json`:
+```json
+"marp.exportAllowLocalFiles": true
+```
+
 ---
 
 ## HTML embebido para componentes visuales
